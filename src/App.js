@@ -6,8 +6,8 @@ import CoinPage from "./Pages/CoinPage";
 import { styled } from "@mui/material";//used styled instead of makeStyles because new version does not support it.
 
 const AppRoot = styled('div')(({ theme }) => ({
-  backgroundColor: "white",
-  color: 'black',
+  backgroundColor: "#14161a",
+  color: 'white',
   minHeight: '100vh',
 }));
 

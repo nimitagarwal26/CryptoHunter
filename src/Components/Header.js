@@ -8,7 +8,8 @@ import { CryptoState } from '../CryptoContext';
 
 const AppRoot = styled('div')(({ theme }) => ({
   flex:1,
-  color:"#00F0A8",
+  //color:"#00F0A8",
+  color:"#4BD1FB",
   fontFamily: 'Montserrat, sans-serif',
   fontSize:'22px',
   fontWeight:'800',

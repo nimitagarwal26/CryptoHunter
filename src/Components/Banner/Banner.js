@@ -67,7 +67,8 @@ const Banner = () => {
                         color: "darkgrey",
                         textTransform: "capitalize",
                         fontFamily: "Montserrat",
-                        textAlign:"center"
+                        textAlign:"center",
+                        paddingBottom:"30px"
                         }}
                     >
                     Get all the Info regarding your favorite Crypto Currency

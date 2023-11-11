@@ -7,7 +7,7 @@ import AliceCarousel from 'react-alice-carousel';
 import { Link } from 'react-router-dom';
 
 const AppRoot = styled('div')(({ theme }) => ({
-  height: '50%',
+  height: '60%',
   display: 'flex',
   alignItems: 'center',
 }));
@@ -67,8 +67,7 @@ const Carousel = () => {
             {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
         </span>
-        <p><br></br></p>
-        <span style={{fontSize: 18, fontWeight: 490, color: "#4BD1FB" }}>
+        <span style={{fontSize: 20, fontWeight: 500, color: "#4BD1FB" }}>
           {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
@@ -80,7 +79,7 @@ const Carousel = () => {
       items: 2,
     },
     512: {
-      items: 4,
+      items: 5,
     },
   };
 

@@ -12,14 +12,21 @@ const AppRoot = styled('div')(({ theme }) => ({
   alignItems: 'center',
 }));
 
+export function numberWithCommas(x){
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+}
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
-  const { currency } = CryptoState();
+  const { currency, symbol } = CryptoState();
   
   const fetchTrendingCoins = async () => {
-    const { data } = await axios.get(TrendingCoins(currency));
-    setTrending(data);
+    try {
+      const { data } = await axios.get(TrendingCoins(currency));
+      setTrending(data);
+    } catch (error) {
+      console.error("Axios Error:", error);
+    }
   };
 
   console.log(trending);
@@ -37,16 +44,32 @@ const Carousel = () => {
         <img
           src={coin?.image}
           alt={coin.name}
-          height="90"
+          height="80"
           style={{ marginBottom: 10 }}
         />
-        <span>
+        <span style={{
+          display: "flex",
+          cursor: "pointer",
+          textTransform: "uppercase",
+          color: "white",
+        }}>
           {coin?.symbol}
           &nbsp;
-          <span>
+          <span style={{
+            display: "flex",
+            flexDirection: "column",
+            cursor: "pointer",
+            textTransform: "uppercase",
+            color: profit > 0? "rgb(14,203,129)" : "red",
+            fontWeight: 500,
+          }}>
             {profit && "+"}
             {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
+        </span>
+        <p><br></br></p>
+        <span style={{fontSize: 18, fontWeight: 490, color: "#4BD1FB" }}>
+          {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
     );

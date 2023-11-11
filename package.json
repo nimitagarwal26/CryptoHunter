@@ -2,6 +2,7 @@
   "name": "cryptohunter",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",

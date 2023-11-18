@@ -1,8 +1,10 @@
 import React from 'react'
-import { Typography, Container,TextField,TableCell,TableContainer,LinearProgress, Table, TableHead, TableRow, TableBody} from '@mui/material'
+import axios from "axios";
+import { Typography, Container,TextField,TableCell,
+         TableContainer,LinearProgress, Table, TableHead,
+         TableRow, TableBody,Pagination} from '@mui/material'
 import { ThemeProvider, createTheme,styled} from "@mui/material/styles";
 import {useState,useEffect} from 'react'
-import axios from "axios";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +19,7 @@ const CoinsTable = () => {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const history=useNavigate();
+  const [page, setPage] = useState(1);
   
   const {currency,symbol}=CryptoState();
 
@@ -28,6 +31,12 @@ const CoinsTable = () => {
         console.error("Axios Error:", error);
     }
   };
+
+  const AppRoot = styled('div')(({ theme }) => ({
+    "& .MuiPaginationItem-root": {
+      color: "#4BD1FB",
+    },
+  }));
 
   useEffect(() => {
     fetchCoins();
@@ -50,25 +59,28 @@ const CoinsTable = () => {
 
   return <ThemeProvider theme={darkTheme}>
      <Container style={{textAlign:'center'}}>
+
      <Typography
         variant="h4"
         style={{ margin: 18, fontFamily: "Montserrat" }}
         >
         Cryptocurrency Prices by Market Cap
      </Typography>
+     
      <TextField
           label="Search For a Crypto Currency.."
           variant="outlined"
           style={{ marginBottom: 20, width: "100%"}}
           onChange={(e) => setSearch(e.target.value)}
      />
+
      <TableContainer>
       {
         loading ? (
           <LinearProgress style={{ backgroundColor: "#4BD1FB" }} />
         ):(<Table>
           <TableHead>
-            <TableRow  style={{ backgroundColor: "#4BD1FB" }}>
+            <TableRow  style={{ backgroundColor: "#4BD1FB", }}>
               {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                     <TableCell
                       style={{
@@ -85,7 +97,9 @@ const CoinsTable = () => {
             </TableRow>
           </TableHead>
             <TableBody>
-              {handleSearch().map((row)=>{
+              {handleSearch()
+                .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                .map((row)=>{
                 const profit=row.price_change_percentage_24h>0;
 
                 return(
@@ -158,7 +172,24 @@ const CoinsTable = () => {
           </Table>
       )}
      </TableContainer>
-     </Container>
+     <AppRoot>
+     <Pagination
+          count={(handleSearch()?.length / 10).toFixed(0)}
+          style={{
+            padding: 20,
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            }}
+          onChange={(_, value) => {
+            setPage(value);
+            window.scroll(0, 450);
+          }}
+        />
+
+     </AppRoot>
+     
+    </Container>
   </ThemeProvider>;
 }
 

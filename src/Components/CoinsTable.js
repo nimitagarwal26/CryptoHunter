@@ -113,6 +113,7 @@ const CoinsTable = () => {
                          fontFamily: "Montserrat",
                        }}
                   key={row.name}
+                  
                 >
                 <TableCell
                   component={TableHead}

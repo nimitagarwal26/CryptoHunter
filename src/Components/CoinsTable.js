@@ -18,7 +18,6 @@ const CoinsTable = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const history=useNavigate();
   const [page, setPage] = useState(1);
   
   const {currency,symbol}=CryptoState();
@@ -48,6 +47,8 @@ const CoinsTable = () => {
       },
      
   });
+
+  const history=useNavigate();
 
   const handleSearch = () => {
     return coins.filter(
@@ -104,7 +105,7 @@ const CoinsTable = () => {
 
                 return(
                 <TableRow  
-                  onClick={() => history.push(`/coins/${row.id}`)}
+                  onClick={() => history(`/coins/${row.id}`)}
                   styles={{ backgroundColor: "#16171a",
                          cursor: "pointer",
                          "&:hover": {

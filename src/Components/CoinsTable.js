@@ -15,21 +15,10 @@ export function numberWithCommas(x) {
 }
 
 const CoinsTable = () => {
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   
-  const {currency,symbol}=CryptoState();
-
-  const fetchCoins = async () => {
-    try{
-        const { data } = await axios.get(CoinList(currency));
-        setCoins(data);
-    }catch (error) {
-        console.error("Axios Error:", error);
-    }
-  };
+  const {currency,symbol,coins,loading,fetchCoins}=CryptoState();
 
   const AppRoot = styled('div')(({ theme }) => ({
     "& .MuiPaginationItem-root": {

@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Homepage from "./Pages/Homepage";
 import CoinPage from "./Pages/CoinPage";
 import { styled } from "@mui/material";//used styled instead of makeStyles because new version does not support it.
+import Alert from "./Components/Alert";
 
 const AppRoot = styled('div')(({ theme }) => ({
   backgroundColor: "#14161a",
@@ -21,6 +22,7 @@ function App() {
           <Route path="/coins/:id" element={<CoinPage />} />
         </Routes>
       </AppRoot>
+      <Alert/>
     </BrowserRouter>
   );
 }

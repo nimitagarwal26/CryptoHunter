@@ -4,6 +4,8 @@ import { ThemeProvider, createTheme,styled } from "@mui/material/styles";
 import {  useNavigate } from 'react-router-dom';//in new version we use navigate instead of useHistory.
 import { fontSize } from '@mui/system';
 import { CryptoState } from '../CryptoContext';
+import AuthModal from './Authentication/AuthModal';
+import UserSidebar from './Authentication/UserSidebar';
 
 
 const AppRoot = styled('div')(({ theme }) => ({
@@ -25,7 +27,7 @@ const Header = () => {
     },
   });
   
-  const {currency,setCurrency}=CryptoState();
+  const {currency,setCurrency,user}=CryptoState();
   console.log(currency);
   
 return (
@@ -51,7 +53,7 @@ return (
             <MenuItem value={"USD"}>USD</MenuItem>
             <MenuItem value={"INR"}>INR</MenuItem>
           </Select>
-           
+           {user ? <UserSidebar/> : <AuthModal/>}
         </Toolbar>
       </Container>
      

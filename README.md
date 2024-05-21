@@ -1,3 +1,66 @@
+Sure, here's a sample README file for your "Crypto Hunter" application:
+
+---
+
+# Crypto Hunter
+
+Crypto Hunter is a sleek and intuitive application designed to empower cryptocurrency enthusiasts with real-time market insights. Built with React.js and Material UI, it offers a responsive design for seamless access across devices. Integrated with the Coin Gecko API for live updates, and fortified with Firebase for secure authentication and data storage, Crypto Hunter is your go-to tool for informed decision-making in the dynamic world of cryptocurrencies.
+
+## Features
+
+- **Real-Time Market Data**: Get up-to-the-minute information on cryptocurrency prices, market caps, and trading volumes through the Coin Gecko API.
+
+![image](https://github.com/nimitagarwal26/CryptoHunter/assets/133573718/88329ea4-7226-4ab9-b93e-ec9e51aea5e2)
+
+
+
+- **User Authentication**: Secure login and user management using Firebase Authentication.
+
+  ![image](https://github.com/nimitagarwal26/CryptoHunter/assets/133573718/b5810c57-23da-4232-9770-cf1130b8ba59)
+
+- **Data Storage**: Store user data securely with Firebase Firestore.
+- **Responsive Design**: Built with React.js and Material UI for a responsive and intuitive user experience across all devices.
+
+## Tech Stack
+
+- **Frontend**: React.js, Material UI
+- **Backend**: Firebase Authentication, Firebase Firestore
+- **API**: Coin Gecko API
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nimitagarwal26/crypto-hunter.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd crypto-hunter
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+1. Create a `.env` file in the root directory and add your Firebase and Coin Gecko API credentials:
+   ```env
+   REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+   REACT_APP_COINGECKO_API_KEY=your_coingecko_api_key
+   ```
+
+2. Start the development server:
+   ```bash
+   npm start
+   ```
+3. Open your browser and navigate to `http://localhost:3000` to see the app in action.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
